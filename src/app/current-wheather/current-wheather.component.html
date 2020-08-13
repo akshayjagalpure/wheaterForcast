@@ -1,0 +1,107 @@
+<div class="center">
+  <div class="card-wrapper">
+    <div class="card-shadow">
+      <section>
+        <h1 class="center" *ngIf="resultFound()">
+          <i>Current weather for {{ currentWeather.name }}</i>
+        </h1>
+        <div *ngIf="resultFound()" class="center">
+          <div class="p-col-12">
+            <div class="p-grid">
+              <div class="p-col-6">
+                weather description :
+              </div>
+              <div class="p-col-6">
+                {{ currentWeather.weather[0].description }}
+              </div>
+            </div>
+            <div class="p-grid">
+              <div class="p-col-12 p-md-6">
+                Temperature:
+              </div>
+              <div class="p-col-12 p-md-6">
+                {{ currentWeather.main?.temp - 273.15 | number: "1.0-0"
+                }}<sup>o</sup>C
+              </div>
+            </div>
+            <div class="p-grid">
+              <div class="p-col-12 p-md-6">
+                Today's high temperature:
+              </div>
+              <div class="p-col-12 p-md-6">
+                {{ currentWeather.main?.temp - 273.15 | number: "1.0-0"
+                }}<sup>o</sup>C
+              </div>
+            </div>
+            <div class="p-grid">
+              <div class="p-col-12 p-md-6">
+                Today's low temperature:
+              </div>
+              <div class="p-col-12 p-md-6">
+                {{ currentWeather.main?.temp_min - 273.15 | number: "1.0-0"
+                }}<sup>o</sup>C
+              </div>
+            </div>
+            <div *ngIf="!moreDataFlag" class="more-btn">
+              <button
+                pButton
+                pRipple
+                type="button"
+                (click)="showMoreData()"
+                label="More"
+                class="p-button-text"
+                pTooltip="Show More Data"
+              ></button>
+            </div>
+            <div *ngIf="moreDataFlag">
+              <div class="p-grid">
+                <div class="p-col-12 p-md-6">
+                  Wind Speed
+                </div>
+                <div class="p-col-12 p-md-6">
+                  {{ currentWeather.wind?.speed }}mph
+                </div>
+              </div>
+              <div class="p-grid">
+                <div class="p-col-12 p-md-6">
+                  Humidity
+                </div>
+                <div class="p-col-12 p-md-6">
+                  {{ currentWeather.main?.humidity }}%
+                </div>
+              </div>
+              <div class="p-grid">
+                <div class="p-col-12 p-md-6">
+                  Pressure
+                </div>
+                <div class="p-col-12 p-md-6">
+                  {{ currentWeather.main?.pressure }}mb
+                </div>
+              </div>
+              <div class="p-grid">
+                <div class="p-col-12 p-md-6">
+                  Sunrise
+                </div>
+                <div class="p-col-12 p-md-6">
+                  {{ currentWeather.sys?.sunrise * 1000 | date: "long" }}
+                </div>
+              </div>
+              <div class="p-grid">
+                <div class="p-col-12 p-md-6">
+                  Sunset
+                </div>
+                <div class="p-col-12 p-md-6">
+                  {{ currentWeather.sys?.sunset * 1000 | date: "long" }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div *ngIf="!resultFound()">
+        <h1 class="center">{{ msg || "Failed to get weather." }}</h1>
+      </div>
+    </div>
+  </div>
+  <!-- </p-card> -->
+</div>

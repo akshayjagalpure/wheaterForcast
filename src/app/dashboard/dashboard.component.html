@@ -1,0 +1,40 @@
+<div class="center">
+  <span class="search-box">
+    <form name="form-control" class="form" #globalSeachForm="ngForm" novalidate>
+      <div class="form-group">
+        <input
+          class="form-control padd"
+          type="text"
+          name="searchName"
+          id="searchName"
+          class="form-control"
+          placeholder="Search By City Name"
+          size="40"
+          [(ngModel)]="searchName"
+          #mNumber="ngModel"
+          pInputText
+          aria-label="Search"
+        />
+      </div>
+      <i
+        class="pi pi-times search-close"
+        *ngIf="searchName != ''"
+        (click)="ClearSearchData()"
+      ></i>
+      <i
+        class="pi pi-search search-icon"
+        (click)="globalSearch(globalSeachForm)"
+      ></i>
+    </form>
+  </span>
+</div>
+<div class="main">
+  <p-tabView>
+    <p-tabPanel header="Current">
+      <app-current-wheather [data]="searchdata"></app-current-wheather>
+    </p-tabPanel>
+    <p-tabPanel header="Forecast">
+      <app-forcast [data]="searchdata"></app-forcast>
+    </p-tabPanel>
+  </p-tabView>
+</div>

@@ -1,0 +1,40 @@
+.main {
+  margin: 0px;
+  background-color: #f5fafd;
+  padding: 20px 20px 40px 20px;
+}
+.search-box {
+  position: relative;
+  line-height: 44px;
+  i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+
+.search-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 8px;
+  top: 16px !important;
+  font-size: 12px;
+}
+.search-close {
+  cursor: pointer;
+  font-size: 15px;
+  position: absolute;
+  top: 14px !important;
+  right: 30px !important;
+  color: #495057;
+}
+
+.padd {
+  padding: 8px;
+  margin-top: 3px;
+}
+
+.searchbar-invalid-msg {
+  margin-top: 1px;
+  padding-left: 5px;
+}
